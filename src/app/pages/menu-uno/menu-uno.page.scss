@@ -1,0 +1,61 @@
+ion-content {
+    --background: #efefef;
+
+    #header {
+        height: 33%;
+        background-color: #3DC2FF;
+        border-radius: 0 0 20px 20px;
+        display: flex;
+        flex-direction: column;
+        color: #efefef;
+        padding: 20px;
+
+        #app-bar {
+            height: 60px;
+            display: flex;
+
+            align-items: center;
+
+            ion-icon {
+                font-size: 25px;
+                margin-left: -5px;
+            }
+
+            h1 {
+                margin-left: 30%;
+                font-size: 25px;
+            }
+        }
+    }
+
+    .card {
+        position: absolute;
+        top: 10%;
+        left: 4%;
+        right: 4%;
+
+        .form-card {
+            --background: #ffffff;
+            box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+            border-radius: 20px;
+            padding: 15px 10px;
+            color: #212121;
+
+            h1 {
+                text-align: center;
+            }
+
+            img {
+                width: 300px;
+                height: 300px;
+            }
+
+
+
+
+
+        }
+    }
+
+
+}

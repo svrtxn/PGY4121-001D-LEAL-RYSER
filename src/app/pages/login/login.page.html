@@ -1,0 +1,62 @@
+<ion-content>
+  <div id="header">
+    <h1>Iniciar sesión</h1>
+  </div>
+
+  <div class="card">
+    <ion-card class="form-card">
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="person" color="secondary"></ion-icon>
+          <ion-input [(ngModel)]="usuario" fill="outline" placeholder="Usuario"></ion-input>
+
+        </ion-item>
+        <ion-item>
+          <ion-icon name="lock-closed" color="secondary"></ion-icon>
+          <ion-input [(ngModel)]="contrasena" fill=" outline" type="password" placeholder="Contraseña"></ion-input>
+        </ion-item>
+
+        <ion-button id="open-modal" class="recuperarContrasena" fill="clear" size="small" color="medium">¿Olvidaste tu
+          contraseña? Haz
+          click
+          aquí</ion-button>
+        <ion-button id="open-loading" class="iniciar" (click)="onLogin()" color="secondary"
+          expand="block">INICIAR</ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cerrar</ion-button>
+          </ion-buttons>
+          <ion-title>Recuperación de contraseña</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Aceptar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <div class="modal-card">
+        <ion-card class="form-modal-card">
+          <ion-card-content>
+            <h2>Ingresa tu correo electrónico y nombre de usuario para recuperar tu contraseña.</h2>
+            <ion-item>
+              <ion-icon name="mail" color="secondary"></ion-icon>
+              <ion-input fill="outline" placeholder="Correo electrónico"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="person" color="secondary"></ion-icon>
+              <ion-input fill="outline" placeholder="Usuario"></ion-input>
+            </ion-item>
+
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>
