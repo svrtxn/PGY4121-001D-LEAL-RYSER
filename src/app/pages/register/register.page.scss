@@ -14,7 +14,7 @@ ion-content {
 
     h1 {
         font-size: 30px;
-        margin-top: 120px;
+        margin-top: 70px;
         text-align: center;
 
     }
@@ -26,7 +26,7 @@ ion-content {
 
     .card {
         position: absolute;
-        top: 26%;
+        top: 16%;
         left: 4%;
         right: 4%;
 
@@ -49,7 +49,6 @@ ion-content {
             }
 
             ion-icon {
-                
                 font-size: 18px;
             }
             #open-loading{
@@ -74,6 +73,7 @@ ion-content {
 
             #register {
                 font-size: 12px;
+                padding: 10px;
 
             }
 
@@ -81,17 +81,19 @@ ion-content {
 
         }
     }
-#logo{
+    #logo{
    
-    width: 6rem;
+        width: 6rem;
+        
+    }
+    .image-container {
+        display: flex;
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+         /* Ajustar la altura al 100% de la ventana */
+      }
     
-}
-.image-container {
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-     /* Ajustar la altura al 100% de la ventana */
-  }
+
 
 
 

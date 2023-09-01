@@ -12,10 +12,6 @@ import { OverlayEventDetail } from '@ionic/core/components';
 
 export class LoginPage implements OnInit {
 
-  // CARGANDO
-
-
-
 
   // MODAL
   @ViewChild(IonModal) modal!: IonModal;

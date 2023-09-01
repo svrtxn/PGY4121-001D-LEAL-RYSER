@@ -3,7 +3,7 @@ ion-content {
 
     #header {
         height: 33%;
-        background-color: #3DC2FF;
+        background-color: #e19b88;
         border-radius: 0 0 20px 20px;
         display: flex;
         flex-direction: column;
@@ -12,22 +12,20 @@ ion-content {
         #app-bar {
             margin-top: 12px;
 
-            ion-button {
-                margin-left: 85%;
-                --background: #ffffff;
-                --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
-                --padding-top: 10px;
-                --padding-bottom: 10px;
-            }
-
-
-            ion-icon {
-                color: #3DC2FF;
-            }
+            
         }
 
     }
+    .logout{
+        --width:10px ;
+    }
+    .hamburguesa{
 
+            --color: black;
+            font-size: 1.5rem;
+
+        
+    }
     h1 {
         font-size: 30px;
         margin-top: 5px;
@@ -53,7 +51,6 @@ ion-content {
             color: #212121;
 
             .menu-card {
-                width: 145px;
                 margin: 10px;
                 --background: #efefef;
                 --color: #212121;

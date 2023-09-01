@@ -1,0 +1,43 @@
+<ion-content>
+  <div id="header">
+    <h1>Registrarse</h1>
+  </div>
+
+  <div class="card">
+    <ion-card class="form-card">
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="person"></ion-icon>
+          <ion-input  fill="outline" placeholder="Usuario"></ion-input>
+
+        </ion-item>
+        <ion-item>
+          <ion-icon name="lock-closed"></ion-icon>
+          <ion-input fill=" outline" type="password" placeholder="Contraseña"></ion-input>
+       </ion-item>
+
+       <ion-item>
+        <ion-icon name="lock-closed"></ion-icon>
+        <ion-input fill=" outline" type="password" placeholder="Repetir contraseña"></ion-input>
+       </ion-item>
+
+
+        <ion-item>
+          <ion-icon name="mail"></ion-icon>
+          <ion-input fill=" outline" type="email" placeholder="Correo electrónico"></ion-input>
+          
+        </ion-item>
+
+        
+        <ion-button id="open-loading" class="iniciar"  
+          expand="block">REGISTRARSE</ion-button>
+          <ion-button id="register"  fill="clear" size="small" color="medium" routerLink="/login"   > ¿Ya tienes una cuenta? Haz click aquí</ion-button>
+
+      </ion-card-content>
+    </ion-card>
+    <div class="image-container">
+      <img id="logo" src="/assets/img/LOGO2.svg" alt="">
+    </div>
+  </div>
+
+</ion-content>

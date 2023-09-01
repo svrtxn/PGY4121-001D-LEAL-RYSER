@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'menu-cuatro/:id',
     loadChildren: () => import('./pages/menu-cuatro/menu-cuatro.module').then(m => m.MenuCuatroPageModule)
+  },  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
+
 
 
 ];
