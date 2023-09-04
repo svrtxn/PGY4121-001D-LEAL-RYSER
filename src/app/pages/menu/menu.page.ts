@@ -24,8 +24,8 @@ export class MenuPage implements OnInit {
   }
 
   menuUno() {
-    var parametroId = "id:" + 12345;
-    this.router.navigateByUrl("/menu-uno/" + parametroId);
+    
+    this.router.navigateByUrl("/menu-uno");
   }
 
   menuDos() {

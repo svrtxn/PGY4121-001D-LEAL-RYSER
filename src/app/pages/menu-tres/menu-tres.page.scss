@@ -56,6 +56,18 @@ ion-content {
 
         }
     }
+    .imgCont{
+        display: flex;
+        justify-content: center;
+    }
+    .profesorImg{
+        margin-bottom: 3rem;
+        border-radius: 55%;
+        max-width: 10rem;
+        max-height: 10rem
+        
+       
 
+    }
 
 }

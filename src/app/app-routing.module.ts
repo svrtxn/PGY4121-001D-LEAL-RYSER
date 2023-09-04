@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuPageModule)
   },
   {
-    path: 'menu-uno/:id',
+    path: 'menu-uno',
     loadChildren: () => import('./pages/menu-uno/menu-uno.module').then(m => m.MenuUnoPageModule)
   },
   {
@@ -28,13 +28,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/menu-dos/menu-dos.module').then(m => m.MenuDosPageModule)
   },
   {
-    path: 'menu-tres/:id',
+    path: 'menu-tres',
     loadChildren: () => import('./pages/menu-tres/menu-tres.module').then(m => m.MenuTresPageModule)
   },
   {
     path: 'menu-cuatro/:id',
     loadChildren: () => import('./pages/menu-cuatro/menu-cuatro.module').then(m => m.MenuCuatroPageModule)
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
