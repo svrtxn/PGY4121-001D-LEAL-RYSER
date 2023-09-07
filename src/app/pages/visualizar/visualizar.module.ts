@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MenuUnoPageRoutingModule } from './menu-uno-routing.module';
+import { VisualizarPageRoutingModule } from './visualizar-routing.module';
 
-import { MenuUnoPage } from './menu-uno.page';
+import { VisualizarPage } from './visualizar.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuUnoPageRoutingModule
+    VisualizarPageRoutingModule
   ],
-  declarations: [MenuUnoPage]
+  declarations: [VisualizarPage]
 })
-export class MenuUnoPageModule {}
+export class VisualizarPageModule {}

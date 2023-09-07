@@ -48,8 +48,8 @@ export class MenuPage implements OnInit {
     this.router.navigateByUrl('login');
   }
 
-  menuUno() {
-    this.router.navigateByUrl('/menu-uno');
+  visualizar() {
+    this.router.navigateByUrl('/visualizar');
   }
 
   menuTres() {

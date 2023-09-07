@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-menu-uno',
-  templateUrl: './menu-uno.page.html',
-  styleUrls: ['./menu-uno.page.scss'],
+  selector: 'app-visualizar',
+  templateUrl: './visualizar.page.html',
+  styleUrls: ['./visualizar.page.scss'],
 })
-export class MenuUnoPage implements OnInit {
-
+export class VisualizarPage implements OnInit {
   parametroIdEmpleado:number | undefined;
 
   constructor(private activatedRoute:ActivatedRoute) { }

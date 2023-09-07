@@ -20,14 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuPageModule)
   },
   {
-    path: 'menu-uno',
-    loadChildren: () => import('./pages/menu-uno/menu-uno.module').then(m => m.MenuUnoPageModule)
-  },
-  {
-    path: 'menu-tres',
-    loadChildren: () => import('./pages/menu-tres/menu-tres.module').then(m => m.MenuTresPageModule)
-  },
-  {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
   },
@@ -39,6 +31,16 @@ const routes: Routes = [
     path: 'info-qr',
     loadChildren: () => import('./pages/info-qr/info-qr.module').then(m => m.InfoQrPageModule)
   },
+  {
+    path: 'visualizar',
+    loadChildren: () => import('./pages/visualizar/visualizar.module').then( m => m.VisualizarPageModule)
+  },
+  {
+    path: 'info-clase',
+    loadChildren: () => import('./pages/info-clase/info-clase.module').then( m => m.InfoClasePageModule)
+  },
+
+
 
 
 
