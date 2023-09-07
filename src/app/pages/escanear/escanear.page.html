@@ -1,0 +1,24 @@
+<ion-content>
+  <div id="header">
+    <div id="app-bar">
+      <ion-buttons slot="start" routerLink="/menu">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-buttons>
+      <h1>Escanear QR</h1>
+    </div>
+  </div>
+
+  <div class="card">
+    <ion-card class="form-card" #menuCard1>
+      <ion-card-content>
+        <div class="scan">
+          <img src="/assets/img/qr.png" alt="">
+        </div>
+        <ion-button routerLink="/info-qr">
+          <ion-icon name="qr-code-outline"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -49,11 +49,14 @@ ion-content {
             }
 
             ion-icon {
+                color: #212121;
                 font-size: 18px;
             }
-            #open-loading{
+
+            #open-loading {
                 --background: #e19b88;
-              
+                --background-activated: #9c695b;
+
 
             }
 
@@ -65,15 +68,11 @@ ion-content {
                 box-shadow: none;
             }
 
-            #open-modal {
-                font-size: 12px;
-                margin-top: -15px;
-                margin-bottom: 20px;
-            }
+
 
             #register {
                 font-size: 12px;
-                padding: 10px;
+
 
             }
 
@@ -81,18 +80,19 @@ ion-content {
 
         }
     }
-    #logo{
-   
+
+    #logo {
         width: 6rem;
-        
+
     }
+
     .image-container {
         display: flex;
-        justify-content: center; /* Centrar horizontalmente */
-        align-items: center; /* Centrar verticalmente */
-         /* Ajustar la altura al 100% de la ventana */
-      }
-    
+        justify-content: center;
+        align-items: center;
+
+    }
+
 
 
 

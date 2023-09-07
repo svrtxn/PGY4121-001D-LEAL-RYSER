@@ -7,32 +7,27 @@
     <ion-card class="form-card">
       <ion-card-content>
         <ion-item>
+          <ion-icon name="mail"></ion-icon>
+          <ion-input fill="outline" placeholder="Correo electronico"></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-icon name="person"></ion-icon>
-          <ion-input  fill="outline" placeholder="Usuario"></ion-input>
-
+          <ion-input fill="outline" placeholder="Usuario"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon name="lock-closed"></ion-icon>
-          <ion-input fill=" outline" type="password" placeholder="Contraseña"></ion-input>
-       </ion-item>
-
-       <ion-item>
-        <ion-icon name="lock-closed"></ion-icon>
-        <ion-input fill=" outline" type="password" placeholder="Repetir contraseña"></ion-input>
-       </ion-item>
-
-
-        <ion-item>
-          <ion-icon name="mail"></ion-icon>
-          <ion-input fill=" outline" type="email" placeholder="Correo electrónico"></ion-input>
-          
+          <ion-input [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña" name="password"></ion-input>
+          <ion-icon slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()"></ion-icon>
         </ion-item>
-
-        
-        <ion-button id="open-loading" class="iniciar"  
-          expand="block">REGISTRARSE</ion-button>
-          <ion-button id="register"  fill="clear" size="small" color="medium" routerLink="/login"   > ¿Ya tienes una cuenta? Haz click aquí</ion-button>
-
+        <ion-item>
+          <ion-icon name="lock-closed"></ion-icon>
+          <ion-input [type]="showPassword2 ? 'text' : 'password'" placeholder="Repetir Contraseña"
+            name="password"></ion-input>
+          <ion-icon slot="end" [name]="showPassword2 ? 'eye-off' : 'eye'" (click)="togglePassword2()"></ion-icon>
+        </ion-item>
+        <ion-button id="open-loading" routerLink="/login" expand="block">INICIAR</ion-button>
+        <ion-button id="register" fill="clear" size="small" color="medium" routerLink="/login"> ¿Ya tienes una
+          cuenta? Haz click aquí</ion-button>
       </ion-card-content>
     </ion-card>
     <div class="image-container">

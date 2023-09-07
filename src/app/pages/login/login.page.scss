@@ -1,3 +1,21 @@
+:root {
+    --ion-color-new: #e19b88;
+    --ion-color-new-rgb: 225, 155, 136;
+    --ion-color-new-contrast: #000000;
+    --ion-color-new-contrast-rgb: 0, 0, 0;
+    --ion-color-new-shade: #c68878;
+    --ion-color-new-tint: #e4a594;
+}
+
+.ion-color-new {
+    --ion-color-base: var(--ion-color-new);
+    --ion-color-base-rgb: var(--ion-color-new-rgb);
+    --ion-color-contrast: var(--ion-color-new-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb);
+    --ion-color-shade: var(--ion-color-new-shade);
+    --ion-color-tint: var(--ion-color-new-tint);
+}
+
 ion-content {
     --background: #efefef;
 
@@ -49,12 +67,14 @@ ion-content {
             }
 
             ion-icon {
-                
+                color: #212121;
                 font-size: 18px;
             }
-            #open-loading{
+
+            #open-loading {
                 --background: #e19b88;
-              
+                --background-activated: #9c695b;
+
 
             }
 
@@ -81,17 +101,21 @@ ion-content {
 
         }
     }
-#logo{
-   
-    width: 6rem;
-    
-}
-.image-container {
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-     /* Ajustar la altura al 100% de la ventana */
-  }
+
+    #logo {
+
+        width: 6rem;
+
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
 
 
 

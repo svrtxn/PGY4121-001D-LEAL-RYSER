@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MenuDosPageRoutingModule } from './menu-dos-routing.module';
+import { InfoQrPageRoutingModule } from './info-qr-routing.module';
 
-import { MenuDosPage } from './menu-dos.page';
+import { InfoQrPage } from './info-qr.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuDosPageRoutingModule
+    InfoQrPageRoutingModule
   ],
-  declarations: [MenuDosPage]
+  declarations: [InfoQrPage]
 })
-export class MenuDosPageModule {}
+export class InfoQrPageModule {}

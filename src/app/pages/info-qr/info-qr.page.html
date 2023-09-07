@@ -1,0 +1,44 @@
+<ion-content>
+  <div id="header">
+    <div id="app-bar">
+      <ion-buttons slot="start" routerLink="/menu">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-buttons>
+      <h1>Asistencia</h1>
+    </div>
+  </div>
+
+  <div class="card">
+    <ion-card class="form-card" #menuCard1>
+      <ion-card-content>
+        <ion-item-group>
+          <ion-item>
+            <ion-icon name="book-outline"></ion-icon>
+            <ion-label>Clase: Yoga Funcional</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="grid-outline"></ion-icon>
+            <ion-label>Sección: YGF-03D </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-label>Profesor: Ricardo Soto </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="calendar-outline"></ion-icon>
+            <ion-label>Fecha: Lunes 04 de Agosto </ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="time-outline"></ion-icon>
+            <ion-label>Hora: 8:30 a 9:50</ion-label>
+          </ion-item>
+        </ion-item-group>
+        <div class="button-container">
+          <ion-button routerLink="/menu">ACEPTAR</ion-button>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -24,3 +24,21 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+:root {
+    --ion-color-yoga: #e19b88;
+    --ion-color-yoga-rgb: 225, 155, 136;
+    --ion-color-yoga-contrast: #ffffff;
+    --ion-color-yoga-contrast-rgb: 0, 0, 0;
+    --ion-color-yoga-shade: #c68878;
+    --ion-color-yoga-tint: #e4a594;
+}
+
+.ion-color-yoga {
+    --ion-color-base: var(--ion-color-yoga);
+    --ion-color-base-rgb: var(--ion-color-yoga-rgb);
+    --ion-color-contrast: var(--ion-color-yoga-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-yoga-contrast-rgb);
+    --ion-color-shade: var(--ion-color-yoga-shade);
+    --ion-color-tint: var(--ion-color-yoga-tint);
+}

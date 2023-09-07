@@ -25,4 +25,14 @@ export class HelperService {
       resolve();
     });
   }
+
+  private username: string | null = null;
+
+  setUsername(username: string) {
+    this.username = username;
+  }
+
+  getUsername(): string | null {
+    return this.username;
+  }
 }

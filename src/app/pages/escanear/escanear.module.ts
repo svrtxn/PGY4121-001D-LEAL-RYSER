@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MenuCuatroPageRoutingModule } from './menu-cuatro-routing.module';
+import { EscanearPageRoutingModule } from './escanear-routing.module';
 
-import { MenuCuatroPage } from './menu-cuatro.page';
+import { EscanearPage } from './escanear.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuCuatroPageRoutingModule
+    EscanearPageRoutingModule
   ],
-  declarations: [MenuCuatroPage]
+  declarations: [EscanearPage]
 })
-export class MenuCuatroPageModule {}
+export class EscanearPageModule {}

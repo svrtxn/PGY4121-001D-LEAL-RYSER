@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MenuDosPage } from './menu-dos.page';
+import { InfoQrPage } from './info-qr.page';
 
-describe('MenuDosPage', () => {
-  let component: MenuDosPage;
-  let fixture: ComponentFixture<MenuDosPage>;
+describe('InfoQrPage', () => {
+  let component: InfoQrPage;
+  let fixture: ComponentFixture<InfoQrPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(MenuDosPage);
+    fixture = TestBed.createComponent(InfoQrPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
