@@ -13,22 +13,29 @@ ion-content {
         #app-bar {
             height: 60px;
             display: flex;
-
+            justify-content: space-between;
             align-items: center;
 
-            ion-icon {
-                font-size: 25px;
-                margin-left: -5px;
+            ion-buttons {
+                display: flex;
+                align-items: center;
+
+                ion-icon {
+                    font-size: 25px;
+                    margin-left: -5px;
+                }
             }
 
             h1 {
-                margin-left: 30%;
                 font-size: 25px;
+                margin: 0;
+                text-align: center;
+                flex-grow: 1;
             }
         }
     }
 
-    .labels{
+    .labels {
         font-size: 12px;
         font-weight: 500;
         margin-left: 5px;

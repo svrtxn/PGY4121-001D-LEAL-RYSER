@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/visualizar/visualizar.module').then( m => m.VisualizarPageModule)
   },
   {
-    path: 'info-clase',
+    path: 'info-clase/:clase',
     loadChildren: () => import('./pages/info-clase/info-clase.module').then( m => m.InfoClasePageModule)
   },
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-visualizar',
@@ -7,25 +7,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./visualizar.page.scss'],
 })
 export class VisualizarPage implements OnInit {
-  parametroIdEmpleado:number | undefined;
+  clase!: string;
 
-  constructor(private activatedRoute:ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.parametroIdEmpleado = this.activatedRoute.snapshot.params['idempleado'];
-    console.log("Parametro", this.parametroIdEmpleado);
+
+  };
+
+
+  InfoClasePage(clase: string) {
+    this.clase = clase;
+    this.router.navigateByUrl('info-clase/' + this.clase);
   }
 
-  ionViewWillEnter(){
-    console.log("Cargando la vista");
+  ionViewWillEnter() {
+
   }
 
-  ionViewDidEnter(){
-    console.log("Vista cargada");
+  ionViewDidEnter() {
+
   }
 
-  ionViewWillLeave(){
-    console.log("Abandonando la vista");
+  ionViewWillLeave() {
+
   }
 
 }

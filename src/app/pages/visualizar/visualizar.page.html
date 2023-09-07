@@ -1,21 +1,22 @@
 <ion-content>
   <div id="header">
     <div id="app-bar">
-      <ion-icon name="arrow-back" routerLink="/menu"></ion-icon>
+      <ion-buttons slot="start" routerLink="/menu">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-buttons>
       <h1>Registro</h1>
     </div>
-
   </div>
 
   <div class="card">
     <ion-card class="form-card">
       <ion-card-content>
-        <ion-card routerLink="/info-clase">
+        <ion-card (click)="InfoClasePage('Yoga Funcional')">
           <ion-card-header>
-            <ion-card-title><h1><strong>Clase Yoga funcional</strong></h1></ion-card-title>
-            
+            <ion-card-title>
+              <h1><strong>Clase Yoga Funcional</strong></h1>
+            </ion-card-title>
           </ion-card-header>
-        
           <ion-card-content class="labels">
             <ion-item>
               <ion-icon name="calendar-outline" size="small"></ion-icon>
@@ -27,12 +28,13 @@
             </ion-item>
           </ion-card-content>
         </ion-card>
-        <ion-card>
+
+        <ion-card (click)="InfoClasePage('Yoga')">
           <ion-card-header>
-            <ion-card-title><h1><strong>Clase Yoga</strong></h1></ion-card-title>
-            
+            <ion-card-title>
+              <h1><strong>Clase Yoga</strong></h1>
+            </ion-card-title>
           </ion-card-header>
-        
           <ion-card-content class="labels">
             <ion-item>
               <ion-icon name="calendar-outline" size="small"></ion-icon>
@@ -44,12 +46,13 @@
             </ion-item>
           </ion-card-content>
         </ion-card>
-        <ion-card>
+
+        <ion-card (click)="InfoClasePage('Yin Yoga')">
           <ion-card-header>
-            <ion-card-title><h1><strong>Clase Yin Yoga</strong></h1></ion-card-title>
-    
+            <ion-card-title>
+              <h1><strong>Clase Yin Yoga</strong></h1>
+            </ion-card-title>
           </ion-card-header>
-        
           <ion-card-content class="labels">
             <ion-item>
               <ion-icon name="calendar-outline" size="small"></ion-icon>
@@ -64,6 +67,6 @@
       </ion-card-content>
     </ion-card>
   </div>
-  
+
 
 </ion-content>
