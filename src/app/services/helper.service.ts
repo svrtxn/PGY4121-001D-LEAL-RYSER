@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 
 @Injectable({
@@ -6,12 +7,34 @@ import { AlertController, LoadingController } from '@ionic/angular';
 })
 export class HelperService {
 
-  constructor(private alertService: AlertController, private loadingCtrl: LoadingController) { }
+  constructor(private alertService: AlertController, private loadingCtrl: LoadingController, private router: Router) { }
 
   async showAlert(msg: string, title: string) {
     var alert = await this.alertService.create({ cssClass: "alertClass", message: msg, header: title, buttons: ['Aceptar'] })
     await alert.present();
     return alert;
+  }
+
+  async showAletarLogOut() {
+    const alert = await this.alertService.create({
+      header: 'Cerrar de Sesión',
+      message: '¿Estás seguro de que quieres cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+        },
+        {
+          text: 'Cerrar Sesión',
+          handler: () => {
+            this.router.navigateByUrl('login');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   async showLoading() {

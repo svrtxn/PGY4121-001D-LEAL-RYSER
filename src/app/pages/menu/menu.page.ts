@@ -45,7 +45,8 @@ export class MenuPage implements OnInit {
   }
 
   logOut() {
-    this.router.navigateByUrl('login');
+    this.helper.showAletarLogOut();
+    
   }
 
   menuUno() {
