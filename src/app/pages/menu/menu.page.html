@@ -24,8 +24,10 @@
         <ion-item routerLink="/menu">
           <ion-icon slot="start" name="settings-outline"></ion-icon> Configuración
         </ion-item>
-        <ion-item (click)="logOut()">
+        <ion-item routerLink="/menu" (click)="logOut()">
           <ion-icon slot="start" name="log-out-outline"></ion-icon> Cerrar Sesión
+
+
         </ion-item>
         <div class="image-container">
           <img id="logo" src="/assets/img/LOGO2.svg" alt="">

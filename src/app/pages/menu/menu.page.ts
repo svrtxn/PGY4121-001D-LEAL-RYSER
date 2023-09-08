@@ -14,7 +14,7 @@ import { AnimationController, IonCard } from '@ionic/angular';
 export class MenuPage implements OnInit {
   @ViewChildren('menuCard1', { read: ElementRef }) menuCards: QueryList<ElementRef>;
 
-  private animations: Animation[] = [];
+  private animation!: Animation;
   username: string | null = null;
 
   constructor(private helper: HelperService, private router: Router, private animationCtrl: AnimationController) {
@@ -25,19 +25,18 @@ export class MenuPage implements OnInit {
   ngAfterViewInit() {
     console.log('ngAfterViewInit() ejecutado');
     this.menuCards.forEach((menuCard: ElementRef, index: number) => {
-      const animation = this.animationCtrl
+      this.animation = this.animationCtrl
         .create()
         .addElement(menuCard.nativeElement)
         .duration(800)
         .fromTo('transform', `translateX(${index * 80}px)`, 'translateX(0px)')
-        .fromTo('opacity', '0', '1');
-      this.animations.push(animation);
-      animation.play();
+        .fromTo('opacity', '0', '1');      
+      this.animation.play();
     });
   }
 
-  ngOnDestroy() {
-    this.animations.forEach(animation => animation.destroy());
+  ionViewDidLeave() {
+    this.animation.stop();
   }
 
   ngOnInit() {
@@ -46,7 +45,7 @@ export class MenuPage implements OnInit {
 
   logOut() {
     this.helper.showAletarLogOut();
-    
+
   }
 
   visualizar() {

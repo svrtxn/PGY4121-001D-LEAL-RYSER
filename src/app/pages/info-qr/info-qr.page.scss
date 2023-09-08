@@ -60,10 +60,15 @@ ion-content {
                     font-size: 1.2rem;
                     margin: 0.6rem;
                     color: #565656;
+                    font-weight: 500;
                 }
 
                 ion-label {
                     white-space: normal;
+                }
+
+                span {
+                    font-weight: 500;
                 }
             }
 
