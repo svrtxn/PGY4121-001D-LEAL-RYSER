@@ -8,15 +8,15 @@
     <ion-card class="form-card">
       <ion-card-content>
         <ion-item>
-          <ion-icon name="person"></ion-icon>
-          <ion-input formControlName="email" fill="outline" placeholder="Correo electronico"></ion-input>
+          <ion-icon name="mail"></ion-icon>
+          <ion-input formControlName="email" fill="outline" placeholder="Correo electrónico"></ion-input>
         </ion-item>
         <div *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">
           <ion-text *ngIf="loginForm.get('email').hasError('required')">
-            Debes escribir un correo electronico
+            Debes escribir un correo electrónico.
           </ion-text>
           <ion-text *ngIf="loginForm.get('email').hasError('pattern')">
-            El correo electronico es inválido
+            El correo electrónico es inválido.
           </ion-text>
         </div>
         <ion-item>
@@ -27,13 +27,13 @@
         </ion-item>
         <div *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
           <ion-text *ngIf="loginForm.get('password').hasError('required')">
-            Tu contraseña debe tener Al menos 8 caracteres, una mayúscula, un número y un carácter especial.
+            Tu contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.
           </ion-text>
           <ion-text *ngIf="loginForm.get('password').hasError('pattern')">
-            La contraseña es invalida
+            La contraseña es inválida.
           </ion-text>
         </div>
-        <ion-button id="open-modal" fill="clear" size="small" color="medium">¿Olvidaste tu
+        <ion-button routerLink="/reset-password" fill="clear" size="small" color="medium">¿Olvidaste tu
           contraseña? Haz
           click
           aquí</ion-button>
@@ -49,38 +49,5 @@
   </div>
 
 </form>
-
-  <ion-modal id="modal" #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>RECUPERAR CONTRASEÑA</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="modal.dismiss()">ACEPTAR</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-item class="modal-item ion-margin-bottom">
-          <p>
-            Ingresa tu correo electronico y nombre de usuario para recuperar tu contraseña.
-          </p>
-        </ion-item>
-        <ion-item shape="round" class="modal-item ion-margin-bottom" type="">
-          <ion-icon name="person"></ion-icon>
-          <ion-input class="ion-margin-start ion-no-border" [(ngModel)]="username" fill="outline"
-            placeholder="Usuario"></ion-input>
-        </ion-item>
-        <ion-item shape="round" class="modal-item ion-margin-bottom">
-          <ion-icon name="mail"></ion-icon>
-          <ion-input class="ion-margin-start ion-no-border" fill=" outline" type="email"
-            placeholder="Correo electrónico"></ion-input>
-        </ion-item>
-        <ion-button class="modal-button" id="open-loading" expand="block" color="yoga">RECUPERAR</ion-button>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-
-
 
 </ion-content>

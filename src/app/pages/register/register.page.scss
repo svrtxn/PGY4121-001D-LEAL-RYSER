@@ -1,4 +1,11 @@
 ion-content {
+    ion-text {
+        font-size: 14px;
+        color: #ff7666;
+        margin-bottom: 50px;
+
+    }
+
     --background: #efefef;
 
     #header {
@@ -76,6 +83,11 @@ ion-content {
 
             }
 
+            .location {
+                margin-left: 10px;
+                font-size: 14px;
+                color: #454545;
+            }
 
 
         }

@@ -19,6 +19,13 @@
 ion-content {
     --background: #efefef;
 
+    ion-text {
+        font-size: 14px;
+        color: #ff7666;
+        margin-bottom: 30px;
+        
+    }
+
     #header {
         height: 33%;
         background-color: #e19b88;

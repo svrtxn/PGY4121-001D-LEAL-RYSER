@@ -24,7 +24,6 @@ export class MenuPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log('ngAfterViewInit() ejecutado');
     this.menuCards.forEach((menuCard: ElementRef, index: number) => {
       this.animation = this.animationCtrl
         .create()
@@ -50,13 +49,17 @@ export class MenuPage implements OnInit {
   }
 
   logOut() {
-    this.authService.signOut().then(() => {
-      this.route.navigate(['/login']);
+    this.authService.singOut().then((confirmed) => {
+      if (confirmed) {
+        this.route.navigate(['/login']);
+      } else {
+        // El usuario canceló la acción, no se cierra la sesión.
+      }
     }).catch((error) => {
       console.log(error);
     });
-
   }
+  
 
   visualizar() {
     this.router.navigateByUrl('/visualizar');

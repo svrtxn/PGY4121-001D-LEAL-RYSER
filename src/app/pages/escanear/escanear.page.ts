@@ -40,6 +40,8 @@ export class EscanearPage implements OnInit {
   ngOnInit() {
   }
 
+  // plugin QR
+ 
 
 
 }

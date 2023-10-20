@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth} from '@angular/fire/compat/auth';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public ngFireAuth: AngularFireAuth) { }
+  constructor(private alertService: AlertController, public ngFireAuth: AngularFireAuth) { }
 
   async registerUser(email:string, password:string, username: string){
     const userCredential = await this.ngFireAuth.createUserWithEmailAndPassword(email, password);
@@ -29,9 +30,36 @@ export class AuthService {
     return await this.ngFireAuth.sendPasswordResetEmail(email)
   }
 
-  async signOut(){
-    return await this.ngFireAuth.signOut()
+  async singOut(): Promise<boolean> {
+    return new Promise<boolean>(async (resolve) => {
+      const alert = await this.alertService.create({
+        header: 'Cerrar Sesión',
+        message: '¿Estás seguro de que quieres cerrar sesión?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+              resolve(false); // Se cancela 
+            },
+          },
+          {
+            text: 'Cerrar Sesión',
+            handler: async () => {
+              await this.ngFireAuth.signOut();
+              resolve(true); // Se confirma 
+            },
+          },
+        ],
+      });
+  
+      await alert.present();
+    });
   }
+  
+  
+
 
   async getProfile(){
     return await this.ngFireAuth.currentUser
@@ -39,7 +67,6 @@ export class AuthService {
   async getUserName(): Promise<string> {
     const user = await this.getProfile();
     if (user) {
-      // Puedes modificar esta lógica para obtener el nombre de usuario desde el usuario actual
       return user.displayName || '';
     }
     return '';

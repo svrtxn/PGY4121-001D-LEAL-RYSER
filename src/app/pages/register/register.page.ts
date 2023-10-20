@@ -3,89 +3,121 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { Comuna } from 'src/app/models/comuna';
+import { Region } from 'src/app/models/region';
+import { HelperService } from 'src/app/services/helper.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-
 export class RegisterPage implements OnInit {
-  
 
-  regForm: FormGroup
+  regForm: FormGroup;
   user: string = '';
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController, public authService:AuthService, public router : Router) { }
+  regiones: Region[] = [];
+  comunas: Comuna[] = [];
+  regionSel: number = 0;
+  comunaSel: number = 0;
+  disabledComuna: boolean;
+
+  constructor(
+    private helper: HelperService,
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
+    public authService: AuthService,
+    public router: Router,
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
+    this.cargarRegion();
+
     this.regForm = this.formBuilder.group({
-    email : ['', [
-      Validators.required,
-      Validators.email,
-      Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"),
-    ]],
-    user : ['',[
-      Validators.required
-    ]],
-
-    password:['',[
-      Validators.required, 
-      Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/),
-    ]], 
-    repeatPassword: ['', [Validators.required]],
-  }, {
-   validator: this.passwordMatchValidator,
-  });
-  this.getUserName();
-}
-
-passwordMatchValidator(form: FormGroup) {
-
-const password = form.get('password').value;
- const repeatPassword = form.get('repeatPassword').value;
-
-  if (password === repeatPassword) {
-    return null; // Las contraseñas coinciden, no hay error
- } else {
-    form.get('repeatPassword').setErrors({ passwordMismatch: true }); // Configura el error para el campo repeatPassword
-    return { passwordMismatch: true }; // Las contraseñas no coinciden, se genera un error
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"),
+        ],
+      ],
+      user: ['', [Validators.required]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/),
+        ],
+      ],
+      repeatPassword: ['', [Validators.required]],
+    }, {
+      validator: this.passwordMatchValidator.bind(this),
+    });
+    this.getUserName();
   }
-}
 
-get errorControl(){
-  return this.regForm?.controls;
+  passwordMatchValidator(form: FormGroup) {
+    const password = form.get('password').value;
+    const repeatPassword = form.get('repeatPassword').value;
 
-}
-async signUp() {
-  const loading = await this.loadingCtrl.create();
-  await loading.present();
-  if(this.regForm?.valid){
-    const email = this.regForm.value.email;
-    const password = this.regForm.value.password;
-    const username = this.regForm.value.user;
-    const user = await this.authService.registerUser(this.regForm.value.email, this.regForm.value.password, this.regForm.value.user).catch((error)=>{
-
-     console.log(error);
-     loading.dismiss();   
-   })
-   if (user){
-     loading.dismiss();
-     this.router.navigate(['/menu']);
-   }else{
-  
-    console.log('Valores incorrectos')
+    if (password === repeatPassword) {
+      return null; // Las contraseñas coinciden, no hay error
+    } else {
+      form.get('repeatPassword').setErrors({ passwordMismatch: true });
+      return { passwordMismatch: true }; // Las contraseñas no coinciden, se genera un error
     }
-   }
- }
- async getUserName() {
-  console.log('Obteniendo nombre de usuario...');
-  this.authService.getUserName().then((username) => {
-    console.log('Nombre de usuario obtenido:', username);
-    this.user = username;
-  });
-}
+  }
 
 
+  async signUp() {
+    const loading = await this.loadingCtrl.create();
+    if (this.regForm.valid) {
+      const email = this.regForm.value.email;
+      const password = this.regForm.value.password;
+      const username = this.regForm.value.user;
+      const user = await this.authService.registerUser(email, password, username).catch((error) => {
+        loading.dismiss();
+        this.helper.showAlert("Las credenciales no son correctas", "Error");
+      });
+      if (user) {
+        loading.dismiss();
+        this.helper.mostrarToast('Registro exitoso');
+        this.router.navigate(['/menu']);
+
+      } else {
+        loading.dismiss();
+        this.helper.showAlert("Las credenciales no son correctas", "Error");
+      }
+    }
+  }
+
+
+
+  async getUserName() {
+    this.authService.getUserName().then((username) => {
+      this.user = username;
+    });
+  }
+
+  // REGIONES Y COMUNAS
+  async cargarRegion() {
+    const req = await this.helper.getRegion();
+    this.regiones = req.data;
+
+  }
+
+  async cargarComuna() {
+    try {
+      const req = await this.helper.getComuna(this.regionSel);
+      this.comunas = req.data;
+      this.disabledComuna = false;
+    } catch (error: any) {
+      await this.helper.showAlert(error.error.msg, "Error");
+    }
+  }
 
 
   // VER CONTRASEÑAs
@@ -99,5 +131,4 @@ async signUp() {
   togglePassword2() {
     this.showPassword2 = !this.showPassword2;
   }
-
 }
