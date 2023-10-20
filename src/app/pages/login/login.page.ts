@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
 import { AnimationController, LoadingController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { async } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -40,11 +40,24 @@ get errorControl(){
 
 }
 
-async signUp (){
+
+async login() {
   const loading = await this.loadingCtrl.create();
   await loading.present();
-  if(this.loginForm?.valid){
-   // const user = await this.authService.registerUser(email, password)
+  if (this.loginForm.valid) {
+    // Utiliza authService para iniciar sesión en lugar de registerUser
+    this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password)
+      .then(user => {
+        // Si el inicio de sesión es exitoso, redirige al usuario a la página deseada (por ejemplo, '/menu')
+        loading.dismiss();
+        this.router.navigate(['/menu']);
+      })
+      .catch(error => {
+        // Si hay un error en el inicio de sesión, muestra un mensaje al usuario o realiza otras acciones necesarias
+        console.log(error);
+        loading.dismiss();
+        // Puedes mostrar un mensaje de error al usuario, por ejemplo: this.helper.showAlert("Credenciales incorrectas", "Error");
+      });
   }
 }
 
@@ -57,8 +70,8 @@ async signUp (){
 
 
   // MODAL
-  enterAnimation = (baseEl: HTMLElement) => {
-    const root = baseEl.shadowRoot;
+ enterAnimation = (baseEl: HTMLElement) => {
+ const root = baseEl.shadowRoot;
 
     if (root) {
       const backdropAnimation = this.animationCtrl
@@ -70,7 +83,7 @@ async signUp (){
         .create()
         .addElement(root.querySelector('.modal-wrapper')!)
         .keyframes([
-          { offset: 0, opacity: '0', transform: 'scale(0)' },
+         { offset: 0, opacity: '0', transform: 'scale(0)' },
           { offset: 1, opacity: '0.99', transform: 'scale(1)' },
         ]);
 
@@ -78,7 +91,7 @@ async signUp (){
         .create()
         .addElement(baseEl)
         .easing('ease-out')
-        .duration(500)
+       .duration(500)
         .addAnimation([backdropAnimation, wrapperAnimation]);
     }
 
@@ -92,27 +105,27 @@ async signUp (){
 
   // VALIDACIÓN USUARIO
 
-  username: string = "";
-  contrasena: string = "";
+ // username: string = "";
+ // contrasena: string = "";
 
-  async onLogin() {
-    if (this.username == "") {
-      this.helper.showAlert("Ingrese un usuario.", "Error")
-      return;
-    }
-    if (this.contrasena == "") {
-      this.helper.showAlert("Ingrese una contraseña.", "Error");
-      return;
-    }
+ // async onLogin() {
+   // if (this.username == "") {
+   //   this.helper.showAlert("Ingrese un usuario.", "Error")
+  //    return;
+   // }
+  //  if (this.contrasena == "") {
+  //    this.helper.showAlert("Ingrese una contraseña.", "Error");
+   //   return;
+  //  }
 
-    if (this.username == "pgy4121-001d" && this.contrasena == "pgy4121-001d") {
-      await this.helper.showLoading();
-      this.helper.setUsername(this.username);
-      this.router.navigateByUrl('/menu');
-    } else {
-      this.helper.showAlert("Datos incorrectos.", "Error")
-    }
-  }
+  //  if (this.username == "pgy4121-001d" && this.contrasena == "pgy4121-001d") {
+  //    await this.helper.showLoading();
+  //    this.helper.setUsername(this.username);
+  //    this.router.navigateByUrl('/menu');
+  //  } else {
+ //     this.helper.showAlert("Datos incorrectos.", "Error")
+ //   }
+ // }
 
 
 

@@ -20,7 +20,7 @@
         </div>
         <ion-item>
           <ion-icon name="person"></ion-icon>
-          <ion-input formControlName ="user"fill="outline" placeholder="Usuario"></ion-input>
+          <ion-input formControlName="user"fill="outline" placeholder="Usuario"></ion-input>
         </ion-item>
         <div *ngIf="regForm.get('user').touched && regForm.get('user').invalid">
           <ion-text *ngIf="regForm.get('user').hasError('required')">
@@ -29,7 +29,7 @@
         </div>
         <ion-item>
           <ion-icon name="lock-closed"></ion-icon>
-          <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña" name="password"></ion-input>
+          <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña"></ion-input>
           <ion-icon slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()"></ion-icon>
         </ion-item>
         <div *ngIf="regForm.get('password').touched && regForm.get('password').invalid">
@@ -41,9 +41,9 @@
           </ion-text>
         </div>
         
-        <ion-item>
+       <ion-item>
           <ion-icon name="lock-closed"></ion-icon>
-          <ion-input formControlName="repeatPassword" [type]="showPassword2 ? 'text' : 'password'" placeholder="Repetir Contraseña" name="repeatPassword"></ion-input>
+          <ion-input formControlName="repeatPassword" [type]="showPassword2 ? 'text' : 'password'" placeholder="Repetir Contraseña" ></ion-input>
           <ion-icon slot="end" [name]="showPassword2 ? 'eye-off' : 'eye'" (click)="togglePassword2()"></ion-icon>
         </ion-item>
         <div *ngIf="regForm.get('repeatPassword').touched && regForm.get('repeatPassword').invalid">
@@ -54,7 +54,7 @@
             Las contraseñas no coinciden.
           </ion-text>
         </div>
-        <ion-button id="open-loading" routerLink="/login" expand="block">INICIAR</ion-button>
+        <ion-button id="open-loading" (click)="signUp()" expand="block">INICIAR</ion-button>
         <ion-button id="register" fill="clear" size="small" color="medium" routerLink="/login"> ¿Ya tienes una
           cuenta? Haz click aquí</ion-button>
       </ion-card-content>

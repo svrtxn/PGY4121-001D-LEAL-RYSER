@@ -3,25 +3,41 @@
 
     <h1>Iniciar sesión</h1>
   </div>
-
+ <form [formGroup]="loginForm">
   <div class="card">
     <ion-card class="form-card">
       <ion-card-content>
         <ion-item>
           <ion-icon name="person"></ion-icon>
-          <ion-input [(ngModel)]="username" fill="outline" placeholder="Usuario"></ion-input>
+          <ion-input formControlName="email" fill="outline" placeholder="Correo electronico"></ion-input>
         </ion-item>
+        <div *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">
+          <ion-text *ngIf="loginForm.get('email').hasError('required')">
+            Debes escribir un correo electronico
+          </ion-text>
+          <ion-text *ngIf="loginForm.get('email').hasError('pattern')">
+            El correo electronico es inválido
+          </ion-text>
+        </div>
         <ion-item>
           <ion-icon name="lock-closed"></ion-icon>
-          <ion-input [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="contrasena"
+          <ion-input [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña" formControlName="password"
             name="password"></ion-input>
           <ion-icon slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePassword()"></ion-icon>
         </ion-item>
+        <div *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
+          <ion-text *ngIf="loginForm.get('password').hasError('required')">
+            Tu contraseña debe tener Al menos 8 caracteres, una mayúscula, un número y un carácter especial.
+          </ion-text>
+          <ion-text *ngIf="loginForm.get('password').hasError('pattern')">
+            La contraseña es invalida
+          </ion-text>
+        </div>
         <ion-button id="open-modal" fill="clear" size="small" color="medium">¿Olvidaste tu
           contraseña? Haz
           click
           aquí</ion-button>
-        <ion-button id="open-loading" (click)="onLogin()" expand="block">INICIAR</ion-button>
+        <ion-button id="open-loading" (click)="login()" expand="block">INICIAR</ion-button>
         <ion-button id="register" fill="clear" size="small" color="medium" routerLink="/register"> ¿No tienes una
           cuenta? Haz click aquí</ion-button>
 
@@ -32,6 +48,7 @@
     </div>
   </div>
 
+</form>
 
   <ion-modal id="modal" #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
     <ng-template>

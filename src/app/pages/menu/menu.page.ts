@@ -5,6 +5,7 @@ import { Component, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { OnInit, QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -15,11 +16,11 @@ export class MenuPage implements OnInit {
   @ViewChildren('menuCard1', { read: ElementRef }) menuCards: QueryList<ElementRef>;
 
   private animation!: Animation;
-  username: string | null = null;
+  user: string = '';
 
-  constructor(private helper: HelperService, private router: Router, private animationCtrl: AnimationController) {
+  constructor(private helper: HelperService, private router: Router, private animationCtrl: AnimationController, public authService: AuthService, public route: Router) {
     this.menuCards = new QueryList<ElementRef>();
-    this.username = this.helper.getUsername();
+   
   }
 
   ngAfterViewInit() {
@@ -40,11 +41,20 @@ export class MenuPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserName();
 
+      
+  }
+  async getUserName() {
+    this.user = await this.authService.getUserName();
   }
 
   logOut() {
-    this.helper.showAletarLogOut();
+    this.authService.signOut().then(() => {
+      this.route.navigate(['/login']);
+    }).catch((error) => {
+      console.log(error);
+    });
 
   }
 
@@ -62,3 +72,4 @@ export class MenuPage implements OnInit {
     this.router.navigateByUrl('/menu-cuatro/' + parametroId);
   }
 }
+
