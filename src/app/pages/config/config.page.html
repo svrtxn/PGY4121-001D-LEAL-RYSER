@@ -11,7 +11,13 @@
   <div class="card">
     <ion-card class="form-card">
       <ion-card-content>
-        
+        <div>
+          <h2>Perfil de Usuario</h2>
+          <p>Nombre de usuario: {{ usuarioActual.username }}</p>
+          <p>Correo electrónico: {{ usuarioActual.email }}</p>
+          <p>Región: {{ usuarioActual.region }}</p>
+          <p>Comuna: {{ usuarioActual.comuna }}</p>
+        </div>
       </ion-card-content>
     </ion-card>
   </div>

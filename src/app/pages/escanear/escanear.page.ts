@@ -4,6 +4,7 @@ import { OnInit, QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 import { BarcodeScanner } from 'capacitor-barcode-scanner';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-escanear',
@@ -13,9 +14,17 @@ import { BarcodeScanner } from 'capacitor-barcode-scanner';
 export class EscanearPage implements OnInit {
   @ViewChildren('menuCard1', { read: ElementRef }) menuCards: QueryList<ElementRef>;
 
+  asignatura: string = '';
+  seccion: string = '';
+  docente: string = '';
+  sala: string = '';
+  fecha: string = '';
+  hora: string = '';
+  leccion: string = '';
+
   private animations: Animation[] = [];
 
-  constructor(private router: Router, private animationCtrl: AnimationController) {
+  constructor(private router: Router, private animationCtrl: AnimationController, public storageService: StorageService) {
     this.menuCards = new QueryList<ElementRef>();
   }
 
@@ -46,8 +55,9 @@ export class EscanearPage implements OnInit {
     var resultadoQr = (await BarcodeScanner.scan()).code;
 
     if (resultadoQr) {
-      console.log("QR", JSON.parse(resultadoQr));
+      await this.storageService.guardarAsistencia(resultadoQr)
     }
-
   }
+
+
 }

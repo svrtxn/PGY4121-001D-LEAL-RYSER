@@ -7,6 +7,7 @@ import { Comuna } from 'src/app/models/comuna';
 import { Region } from 'src/app/models/region';
 import { HelperService } from 'src/app/services/helper.service';
 import { HttpClient } from '@angular/common/http';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class RegisterPage implements OnInit {
     public loadingCtrl: LoadingController,
     public authService: AuthService,
     public router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    public storageService: StorageService
   ) { }
 
   ngOnInit() {
@@ -65,14 +67,14 @@ export class RegisterPage implements OnInit {
     const repeatPassword = form.get('repeatPassword').value;
 
     if (password === repeatPassword) {
-      return null; 
+      return null;
     } else {
       form.get('repeatPassword').setErrors({ passwordMismatch: true });
-      return { passwordMismatch: true }; 
+      return { passwordMismatch: true };
     }
   }
 
-// REGISTRAR USUARIO
+  // REGISTRAR USUARIO
   async signUp() {
     const loading = await this.loadingCtrl.create();
     if (this.regForm.valid) {
@@ -84,16 +86,25 @@ export class RegisterPage implements OnInit {
         this.helper.showAlert("Las credenciales no son correctas", "Error");
       });
       if (user) {
+        const usuario = {
+          email: email,
+          username: username,
+          password: password,
+          region: this.regionSel,
+          comuna: this.comunaSel,
+        };
+        await this.storageService.guardarUsuario(usuario);
         loading.dismiss();
         this.helper.mostrarToast('Registro exitoso');
         this.router.navigate(['/menu']);
+      };
 
-      } else {
-        loading.dismiss();
-        this.helper.showAlert("Las credenciales no son correctas", "Error");
-      }
+    } else {
+      loading.dismiss();
+      this.helper.showAlert("Las credenciales no son correctas", "Error");
     }
   }
+
 
 
 
