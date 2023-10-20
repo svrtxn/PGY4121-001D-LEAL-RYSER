@@ -22,16 +22,6 @@ export class HelperService {
     return alert;
   }
 
-  private username: string | null = null;
-
-  setUsername(username: string) {
-    this.username = username;
-  }
-
-  getUsername(): string | null {
-    return this.username;
-  }
-
   async getRegion() {
     const observable = this.http.get<ApiResponse<Region>>(`${environment.apiUrl}region`);
     const promise = observable.toPromise();

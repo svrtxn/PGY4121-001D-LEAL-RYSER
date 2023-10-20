@@ -8,6 +8,7 @@ import { Region } from 'src/app/models/region';
 import { HelperService } from 'src/app/services/helper.service';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -64,14 +65,14 @@ export class RegisterPage implements OnInit {
     const repeatPassword = form.get('repeatPassword').value;
 
     if (password === repeatPassword) {
-      return null; // Las contraseñas coinciden, no hay error
+      return null; 
     } else {
       form.get('repeatPassword').setErrors({ passwordMismatch: true });
-      return { passwordMismatch: true }; // Las contraseñas no coinciden, se genera un error
+      return { passwordMismatch: true }; 
     }
   }
 
-
+// REGISTRAR USUARIO
   async signUp() {
     const loading = await this.loadingCtrl.create();
     if (this.regForm.valid) {

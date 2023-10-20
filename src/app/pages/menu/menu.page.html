@@ -21,13 +21,11 @@
         <ion-item>
           <h3>Bienvenido {{ user }} </h3>
         </ion-item>
-        <ion-item routerLink="/menu">
-          <ion-icon slot="start" name="settings-outline"></ion-icon> Configuración
+        <ion-item routerLink="/config">
+          <ion-icon slot="start" name="settings-outline" ></ion-icon> Configuración
         </ion-item>
         <ion-item routerLink="/menu" (click)="logOut()">
           <ion-icon slot="start" name="log-out-outline"></ion-icon> Cerrar Sesión
-
-
         </ion-item>
         <div class="image-container">
           <img id="logo" src="/assets/img/LOGO2.svg" alt="">

@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { OnInit, QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
+import { BarcodeScanner } from 'capacitor-barcode-scanner';
 
 @Component({
   selector: 'app-escanear',
@@ -41,7 +42,12 @@ export class EscanearPage implements OnInit {
   }
 
   // plugin QR
- 
+  async escanear() {
+    var resultadoQr = (await BarcodeScanner.scan()).code;
 
+    if (resultadoQr) {
+      console.log("QR", JSON.parse(resultadoQr));
+    }
 
+  }
 }

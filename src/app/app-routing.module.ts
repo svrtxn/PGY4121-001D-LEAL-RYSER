@@ -48,6 +48,11 @@ const routes: Routes = [
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordPageModule)
   },
+  {
+    path: 'config', canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redireccionar },
+    loadChildren: () => import('./pages/config/config.module').then( m => m.ConfigPageModule)
+  },
+
 
 
 

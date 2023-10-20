@@ -19,8 +19,6 @@ export class AuthService {
     }
     return userCredential;
   }
-    
-  
 
   async loginUser(email:string, password:string){
     return await this.ngFireAuth.signInWithEmailAndPassword(email, password)
@@ -58,9 +56,6 @@ export class AuthService {
     });
   }
   
-  
-
-
   async getProfile(){
     return await this.ngFireAuth.currentUser
   }

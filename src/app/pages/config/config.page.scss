@@ -35,6 +35,12 @@ ion-content {
         }
     }
 
+    .labels {
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 5px;
+    }
+
     .card {
         position: absolute;
         top: 10%;
@@ -43,58 +49,23 @@ ion-content {
 
         .form-card {
             --background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
             box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
             border-radius: 20px;
             padding: 15px 10px;
             color: #212121;
 
-
-
-
             h1 {
                 text-align: center;
             }
 
-
-            .scan {
-                background: rgba(255, 255, 255, 1);
-                border-radius: 16px;
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-                backdrop-filter: blur(11.8px);
-                -webkit-backdrop-filter: blur(11.8px);
-                border: 5PX solid #e19b88;
-                padding: 10px;
-                width: 250px;
-                height: 250px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-
-                img {
-                    max-width: 100%;
-                    max-height: 100%;
-                }
-
-
+            img {
+                width: 300px;
+                height: 300px;
             }
 
-            ion-button {
-                margin-top: 20px;
-                --border-radius: 50%;
-                --background: #e19b88;
-                --background-activated: #9c695b;
 
-                ion-icon {
-                    color: #ffffff;
-                    font-size: 2rem;
-                }
-            }
+
+
 
         }
     }

@@ -12,6 +12,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { Preferences } from '@capacitor/preferences';
 
 // import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
