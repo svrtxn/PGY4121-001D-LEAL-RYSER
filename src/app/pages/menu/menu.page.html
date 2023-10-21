@@ -21,8 +21,8 @@
         <ion-item>
           <h3>Bienvenido {{ user }} </h3>
         </ion-item>
-        <ion-item>
-          <ion-icon slot="start" name="settings-outline" id="open-modal"></ion-icon> Configuración
+        <ion-item id="open-modal">
+          <ion-icon slot="start" name="settings-outline"></ion-icon> Configuración
         </ion-item>
         <ion-item routerLink="/menu" (click)="logOut()">
           <ion-icon slot="start" name="log-out-outline"></ion-icon> Cerrar Sesión
