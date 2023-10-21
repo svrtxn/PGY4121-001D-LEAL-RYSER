@@ -80,29 +80,23 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title>RECUPERAR CONTRASEÑA</ion-title>
+          <ion-title>INFORMACION DE PERFIL</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="modal.dismiss()">ACEPTAR</ion-button>
+            <ion-button (click)="modal.dismiss()">REGRESAR</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-item class="modal-item ion-margin-bottom">
-          <p>
-            Ingresa tu correo electronico y nombre de usuario para recuperar tu contraseña.
-          </p>
-        </ion-item>
-        <ion-item shape="round" class="modal-item ion-margin-bottom" type="">
-          <ion-icon name="person"></ion-icon>
-          <ion-input class="ion-margin-start ion-no-border" [(ngModel)]="username" fill="outline"
-            placeholder="Usuario"></ion-input>
-        </ion-item>
-        <ion-item shape="round" class="modal-item ion-margin-bottom">
-          <ion-icon name="mail"></ion-icon>
-          <ion-input class="ion-margin-start ion-no-border" fill=" outline" type="email"
-            placeholder="Correo electrónico"></ion-input>
-        </ion-item>
-        <ion-button class="modal-button" id="open-loading" expand="block" color="yoga">RECUPERAR</ion-button>
+        <div class="perfil-container">
+          <ion-avatar>
+            <img src="/assets/img/avatar.png" alt="Foto de perfil">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ user }}</h2>
+            <p>{{ email }}</p>
+          </ion-label>
+        </div>
+      
       </ion-content>
     </ng-template>
   </ion-modal>

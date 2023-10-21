@@ -37,7 +37,7 @@
     "capacitor-barcode-scanner": "github:RuedaDeRepuesto/capacitor-barcode-scanner",
     "firebase": "^10.5.0",
     "ionicons": "^7.0.0",
-    "rxjs": "^7.4.0",
+    "rxjs": "^7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

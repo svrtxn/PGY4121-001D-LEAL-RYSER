@@ -21,6 +21,7 @@ export class MenuPage implements OnInit {
 
   private animation!: Animation;
   user: string = '';
+  email: string = '';
 
 
   constructor(private helper: HelperService, private router: Router, private animationCtrl: AnimationController, public authService: AuthService, public route: Router) {
@@ -46,6 +47,7 @@ export class MenuPage implements OnInit {
 
   ngOnInit() {
     this.getUserName();
+    this.getEmail();
   }
 
   enterAnimation = (baseEl: HTMLElement) => {
@@ -83,7 +85,10 @@ export class MenuPage implements OnInit {
   async getUserName() {
     this.user = await this.authService.getUserName();
   }
-
+  
+  async getEmail() {
+    this.email = await this.authService.getEmail();
+  }
   logOut() {
     this.authService.singOut().then((confirmed) => {
       if (confirmed) {

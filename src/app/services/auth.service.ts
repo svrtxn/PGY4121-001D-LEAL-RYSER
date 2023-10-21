@@ -66,6 +66,13 @@ export class AuthService {
     }
     return '';
   }
+  async getEmail(): Promise<string> {
+    const user = await this.getProfile();
+    if (user) {
+      return user.email || '';
+    }
+    return '';
+  }
 }
 
 
