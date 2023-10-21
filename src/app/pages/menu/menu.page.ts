@@ -6,6 +6,9 @@ import { OnInit, QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { Share } from '@capacitor/share';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
   selector: 'app-menu',
@@ -14,13 +17,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MenuPage implements OnInit {
   @ViewChildren('menuCard1', { read: ElementRef }) menuCards: QueryList<ElementRef>;
+  @ViewChild(IonModal) modal: IonModal;
 
   private animation!: Animation;
   user: string = '';
 
+
   constructor(private helper: HelperService, private router: Router, private animationCtrl: AnimationController, public authService: AuthService, public route: Router) {
     this.menuCards = new QueryList<ElementRef>();
-   
   }
 
   ngAfterViewInit() {
@@ -30,10 +34,11 @@ export class MenuPage implements OnInit {
         .addElement(menuCard.nativeElement)
         .duration(800)
         .fromTo('transform', `translateX(${index * 80}px)`, 'translateX(0px)')
-        .fromTo('opacity', '0', '1');      
+        .fromTo('opacity', '0', '1');
       this.animation.play();
     });
   }
+
 
   ionViewDidLeave() {
     this.animation.stop();
@@ -41,9 +46,40 @@ export class MenuPage implements OnInit {
 
   ngOnInit() {
     this.getUserName();
-
-      
   }
+
+  enterAnimation = (baseEl: HTMLElement) => {
+    const root = baseEl.shadowRoot;
+
+    if (root) {
+      const backdropAnimation = this.animationCtrl
+        .create()
+        .addElement(root.querySelector('ion-backdrop')!)
+        .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
+
+      const wrapperAnimation = this.animationCtrl
+        .create()
+        .addElement(root.querySelector('.modal-wrapper')!)
+        .keyframes([
+          { offset: 0, opacity: '0', transform: 'scale(0)' },
+          { offset: 1, opacity: '0.99', transform: 'scale(1)' },
+        ]);
+
+      return this.animationCtrl
+        .create()
+        .addElement(baseEl)
+        .easing('ease-out')
+        .duration(500)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+    }
+
+    return this.animationCtrl.create();
+  };
+
+  leaveAnimation = (baseEl: HTMLElement) => {
+    return this.enterAnimation(baseEl).direction('reverse');
+  };
+
   async getUserName() {
     this.user = await this.authService.getUserName();
   }
@@ -53,13 +89,20 @@ export class MenuPage implements OnInit {
       if (confirmed) {
         this.route.navigate(['/login']);
       } else {
-        // El usuario canceló la acción, no se cierra la sesión.
+
       }
     }).catch((error) => {
       console.log(error);
     });
   }
-  
+
+  async compartir() {
+    await Share.share({
+      title: 'COMPARTIR',
+      text: `Descarga YOGAYOGA`,
+
+    });
+  }
 
   visualizar() {
     this.router.navigateByUrl('/visualizar');

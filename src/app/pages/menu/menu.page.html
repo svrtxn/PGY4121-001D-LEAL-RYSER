@@ -21,8 +21,8 @@
         <ion-item>
           <h3>Bienvenido {{ user }} </h3>
         </ion-item>
-        <ion-item routerLink="/config">
-          <ion-icon slot="start" name="settings-outline" ></ion-icon> Configuración
+        <ion-item>
+          <ion-icon slot="start" name="settings-outline" id="open-modal"></ion-icon> Configuración
         </ion-item>
         <ion-item routerLink="/menu" (click)="logOut()">
           <ion-icon slot="start" name="log-out-outline"></ion-icon> Cerrar Sesión
@@ -30,6 +30,8 @@
         <div class="image-container">
           <img id="logo" src="/assets/img/LOGO2.svg" alt="">
         </div>
+
+
       </ion-content>
     </ion-menu>
   </div>
@@ -61,12 +63,49 @@
       </ion-grid>
 
     </ion-card>
+    <div>
+      <div class="fuera">
+
+        <ion-button expand="block" color="yoga" (click)="compartir()"><ion-icon slot="end"
+            name="share-social"></ion-icon>Comparte
+          la aplicación con tus amigos!</ion-button>
+      </div>
+    </div>
     <div class="footer">
       <p>Creado por Mariano Leal - Steffi Ryser</p>
     </div>
 
   </div>
-
+  <ion-modal id="modal" #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>RECUPERAR CONTRASEÑA</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">ACEPTAR</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item class="modal-item ion-margin-bottom">
+          <p>
+            Ingresa tu correo electronico y nombre de usuario para recuperar tu contraseña.
+          </p>
+        </ion-item>
+        <ion-item shape="round" class="modal-item ion-margin-bottom" type="">
+          <ion-icon name="person"></ion-icon>
+          <ion-input class="ion-margin-start ion-no-border" [(ngModel)]="username" fill="outline"
+            placeholder="Usuario"></ion-input>
+        </ion-item>
+        <ion-item shape="round" class="modal-item ion-margin-bottom">
+          <ion-icon name="mail"></ion-icon>
+          <ion-input class="ion-margin-start ion-no-border" fill=" outline" type="email"
+            placeholder="Correo electrónico"></ion-input>
+        </ion-item>
+        <ion-button class="modal-button" id="open-loading" expand="block" color="yoga">RECUPERAR</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 
 </ion-content>

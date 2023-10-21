@@ -52,6 +52,9 @@ export class StorageService {
 
 
 
+  async usuarioActual(usuario) {
+    
+  }
 
 
 
