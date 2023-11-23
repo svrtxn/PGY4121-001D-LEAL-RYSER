@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "yoga-yoga-17cce": {
+      "hosting": {
+        "app": [
+          "yoga-yoga-17cce"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "yoga-yoga-17cce"
+  }
+}
